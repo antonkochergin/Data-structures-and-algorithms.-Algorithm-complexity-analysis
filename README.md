@@ -1,1 +1,1 @@
-# Data-structures-and-algorithms.-Algorithm-complexity-analysis
+# Структуры данных и алгоритмы. Анализ сложности алгоритмов

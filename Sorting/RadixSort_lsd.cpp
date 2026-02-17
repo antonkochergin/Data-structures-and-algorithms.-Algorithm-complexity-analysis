@@ -56,16 +56,8 @@ void radixSortLSD(int A[], int N, int m, int P = 10)
 
 int main()
 {
-    // Числа с разным количеством разрядов
     int a[] = {7, 45, 321, 2, 98, 1, 6543, 23, 876, 4};
-    int N = sizeof(a) / sizeof(a[0]);
-
-    cout << "Исходный массив: ";
-    for (size_t i = 0; i < N; i++)
-    {
-        cout << a[i] << " ";
-    }
-    cout << endl;
+    int N = sizeof(a) / sizeof(a[0]); // Количество элементов массива
 
     int mx = 0;
     for (int i = 0; i < N; i++)
@@ -74,7 +66,7 @@ int main()
             mx = a[i];
     }
 
-    int m = 0;
+    int m = 0; // Максимальное число разрядов числа в массиве
     int tmp = mx;
     while (tmp > 0)
     {
@@ -86,7 +78,6 @@ int main()
 
     radixSortLSD(a, N, m, 10);
 
-    cout << "Отсортированный массив: ";
     for (size_t i = 0; i < N; i++)
     {
         cout << a[i] << " ";

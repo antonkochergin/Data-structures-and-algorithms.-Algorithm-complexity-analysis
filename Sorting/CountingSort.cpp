@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 
-void countingSort(int a[], int N, int k)
+void countingSort(int a[], int N, int mx)
 {
     // Находим минимальное значение в массиве
     int mn = a[0];
@@ -13,7 +13,7 @@ void countingSort(int a[], int N, int k)
     }
 
     // Корректируем размер массива с учетом отрицательных
-    int range = k - mn + 1;
+    int range = mx - mn + 1;
     int *b = new int[range]();
 
     // Подсчет элементов со смещением на minVal
@@ -39,10 +39,15 @@ int main()
     // Пример с отрицательными числами
     int a[] = {-5, 3, -2, 4, -8, 1, -3, 4, -2, 7};
     int n = sizeof(a) / sizeof(a[0]);
-    int k = 7; // максимальное значение (можно не использовать, но оставим для совместимости)
+    int mx = 0;
 
-    cout << "Отсортированный массив: ";
-    countingSort(a, n, k);
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] > mx)
+            mx = a[i];
+    }
+
+    countingSort(a, n, mx);
     cout << endl;
 
     return 0;

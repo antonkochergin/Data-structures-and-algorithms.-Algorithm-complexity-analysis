@@ -12,7 +12,6 @@ void quickSort(int a[], int left, int right)
     {
         int p = a[(left + right) / 2];
         int i = left, j = right;
-        cout << "p = " << p << endl;
         while (i <= j)
         {
             while (a[i] < p)
@@ -30,9 +29,7 @@ void quickSort(int a[], int left, int right)
                 j--;
                 for (int i = left; i <= right; i++)
                 {
-                    cout << a[i] << " ";
                 }
-                cout << endl;
             }
         }
         quickSort(a, left, j);

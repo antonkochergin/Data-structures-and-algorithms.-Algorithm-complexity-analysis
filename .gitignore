@@ -49,3 +49,13 @@
 **/obj/
 **/Debug/
 **/Release/
+# Visual Studio
+.vs/
+*.ipch
+*.sln
+*.vcxproj
+*.vcxproj.filters
+Debug/
+Release/
+x64/
+x86/

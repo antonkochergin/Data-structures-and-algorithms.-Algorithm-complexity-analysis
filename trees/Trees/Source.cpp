@@ -16,7 +16,7 @@ using namespace std;
 HANDLE outp = GetStdHandle(STD_OUTPUT_HANDLE);
 CONSOLE_SCREEN_BUFFER_INFO csbInfo;
 
-// Структура для бинарного дерева поиска
+
 struct tree {
     int inf;
     tree* left;
@@ -24,7 +24,7 @@ struct tree {
     tree* parent;
 };
 
-// Создание нового узла
+
 tree* node(int x) {
     tree* n = new tree;
     n->inf = x;
@@ -32,7 +32,7 @@ tree* node(int x) {
     return n;
 }
 
-// Вставка элемента в дерево
+
 tree* insert(tree*& tr, int x) {
     tree* n = node(x);
     if (!tr) {
@@ -70,7 +70,7 @@ tree* insert(tree*& tr, int x) {
     return tr;
 }
 
-// Поиск элемента в дереве бинарного поиска
+
 tree* find(tree* tr, int x) {
     if (!tr || tr->inf == x) return tr;
     if (x < tr->inf)
@@ -79,7 +79,7 @@ tree* find(tree* tr, int x) {
         return find(tr->right, x);
 }
 
-// Поиск минимального элемента в поддереве
+
 tree* findMin(tree* v) {
     if (!v) return NULL;
     while (v->left) {
@@ -93,7 +93,7 @@ tree* Min(tree* tr) {
     else return Min(tr->left); //идем по левой ветке до конца
 }
 
-// Удаление узла из дерева бинарного поиска
+
 void deleteNode(tree*& tr, tree* v) {
     if (!v) return;
 
@@ -203,9 +203,6 @@ void printTree(tree* tr) {
         short max_w = 128;
         if (width > max_w) width = max_w;
 
-        while (!isSizeOfConsoleCorrect(width, max)) {
-            system("pause");
-        }
 
         //резервируем место для вывода
         for (short i = 0; i < max; ++i) cout << '\n';
@@ -242,7 +239,7 @@ int main() {
     tree* root = NULL;
 
 
-    vector<int> numbers = { 45,60,70,65,15,25,20,28,27,26,10,13,11 };
+    vector<int> numbers = { 40, 20,80,10,15,60,70,63,68,5,8,3,90,85 };
 
     for (size_t i = 0; i < numbers.size(); ++i) {
         int current_number = numbers[i];
@@ -253,23 +250,12 @@ int main() {
     }
 
     cout << "\n\n";
-    cout << "ПОИСК ЭЛЕМЕНТОВ В ДЕРЕВЕ\n";
-
-    vector<int> searchKeys = { 3, 10, 7, 0 };
-    for (int key : searchKeys) {
-        tree* found = find(root, key);
-        if (found) {
-            cout << "Элемент " << key << " НАЙДЕН в дереве.\n";
-        }
-        else {
-            cout << "Элемент " << key << " НЕ НАЙДЕН в дереве.\n";
-        }
-    }
+    
     cout << endl;
 
     cout << "ПОСЛЕДОВАТЕЛЬНОЕ УДАЛЕНИЕ ЭЛЕМЕНТОВ\n";
 
-    vector<int> deleteKeys = { 7, 3, 5, 10 };
+    vector<int> deleteKeys = { 40, 60  };
     for (int key : deleteKeys) {
         cout << "\nПытаемся удалить элемент " << key << ":\n";
         deleteByKey(root, key);
